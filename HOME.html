@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Café Menu</title>
+    <style>
+        /* Basic Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://images.unsplash.com/photo-1555691063-4e3ac2c06f7c'); /* Fancy Coffee Background */
+            background-size: cover; /* Ensures the image covers the whole page */
+            background-position: center; /* Centers the image */
+            color: #333;
+        }
+
+        header {
+            background-color: rgba(45, 45, 45, 0.7); /* Dark overlay for better readability */
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 5px solid #fff;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .menu-item {
+            background-color: rgba(255, 255, 255, 0.8); /* Slight white background for menu items */
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 30%;
+            margin-bottom: 20px;
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .menu-item img {
+            width: 100%;
+            border-radius: 8px;
+            height: auto;
+        }
+
+        .menu-item h3 {
+            margin-top: 10px;
+            font-size: 1.5em;
+            color: #2d2d2d;
+        }
+
+        .menu-item p {
+            font-size: 1.1em;
+            color: #777;
+            margin: 5px 0;
+        }
+
+        .price {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #2d2d2d;
+        }
+
+        .order-summary {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+        }
+
+        .order-summary h3 {
+            font-size: 1.8em;
+            color: #2d2d2d;
+        }
+
+        .order-summary p {
+            font-size: 1.2em;
+            color: #555;
+        }
+
+        footer {
+            background-color: #2d2d2d;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .remove-btn {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 0.9em;
+            border-radius: 5px;
+        }
+
+        .remove-btn:hover {
+            background-color: darkred;
+        }
+
+        .checkout-btn {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 1.2em;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        .checkout-btn:hover {
+            background-color: #45a049;
+        }
+
+        @media (max-width: 768px) {
+            .menu-item {
+                width: 45%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .menu-item {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <h1>Welcome to Our Café</h1>
+        <p>Your favorite place for coffee, cookies, and banana bread!</p>
+    </header>
+
+    <!-- Menu Section -->
+    <div class="container">
+        <!-- Cappuccino -->
+        <div class="menu-item">
+            <img src="https://images.unsplash.com/photo-1557682224-90d1b19345ae" alt="Cappuccino">
+            <h3>Cappuccino</h3>
+            <p>Perfectly brewed cappuccino with rich foam and espresso.</p>
+            <p class="price">$4.00</p>
+            <button onclick="addToOrder('Cappuccino', 4.00)">Add to Order</button>
+        </div>
+
+        <!-- Latte -->
+        <div class="menu-item">
+            <img src="https://images.unsplash.com/photo-1603473070572-7d9b3b062e96" alt="Latte">
+            <h3>Latte</h3>
+            <p>Smooth and creamy latte made with freshly brewed espresso.</p>
+            <p class="price">$3.80</p>
+            <button onclick="addToOrder('Latte', 3.80)">Add to Order</button>
+        </div>
+
+        <!-- Hot Chocolate -->
+        <div class="menu-item">
+            <img src="https://images.unsplash.com/photo-1604075152646-0b971dd8c3e2" alt="Hot Chocolate">
+            <h3>Hot Chocolate</h3>
+            <p>Rich and indulgent hot chocolate topped with whipped cream.</p>
+            <p class="price">$3.50</p>
+            <button onclick="addToOrder('Hot Chocolate', 3.50)">Add to Order</button>
+        </div>
+
+        <!-- Ham & Cheese Croissant -->
+        <div class="menu-item">
+            <img src="https://images.unsplash.com/photo-1571342950050-592ea45d64a5" alt="Ham & Cheese Croissant">
+            <h3>Ham & Cheese Croissant</h3>
+            <p>Buttery croissant with ham and melted cheese, a perfect snack.</p>
+            <p class="price">$4.50</p>
+            <button onclick="addToOrder('Ham & Cheese Croissant', 4.50)">Add to Order</button>
+        </div>
+
+        <!-- Cookies -->
+        <div class="menu-item">
+            <img src="https://images.unsplash.com/photo-1565299640-742f64ea2a80" alt="Cookies">
+            <h3>Cookies</h3>
+            <p>Freshly baked chocolate chip cookies with a soft, gooey center.</p>
+            <p class="price">$2.00</p>
+            <button onclick="addToOrder('Cookies', 2.00)">Add to Order</button>
+        </div>
+
+        <!-- Banana Bread -->
+        <div class="menu-item">
+            <img src="https://images.unsplash.com/photo-1562698571-b25862261dff" alt="Banana Bread">
+            <h3>Banana Bread</h3>
+            <p>Warm and moist banana bread, perfect with a cup of coffee.</p>
+            <p class="price">$4.00</p>
+            <button onclick="addToOrder('Banana Bread', 4.00)">Add to Order</button>
+        </div>
+    </div>
+
+    <!-- Order Summary Section -->
+    <div class="order-summary">
+        <h3>Your Order</h3>
+        <div id="order-list">
+            <p>No items selected yet.</p>
+        </div>
+        <p><strong>Total: $<span id="total-price">0.00</span></strong></p>
+        <button class="checkout-btn" onclick="checkout()">Proceed to Checkout</button>
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2024 Café Delight | All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Initialize an array to store the items added to the order
+        let orderItems = [];
+        let totalPrice = 0;
+
+        // Function to add items to the order
+        function addToOrder(itemName, price) {
+            // Add item to the order array
+            orderItems.push({ name: itemName, price: price });
+
+            // Update the total price
+            totalPrice += price;
+
+            // Update the order list on the page
+            updateOrderSummary();
+        }
+
+        // Function to update the order summary
+        function updateOrderSummary() {
+            const orderList = document.getElementById('order-list');
+            const totalPriceElement = document.getElementById('total-price');
+
+            // Clear current order summary
+            orderList.innerHTML = '';
+
+            // If there are no items, display a message
+            if (orderItems.length === 0) {
+                orderList.innerHTML = '<p>No items selected yet.</p>';
+            } else {
+                // Otherwise, display each item in the order
+                orderItems.forEach((item, index) => {
+                    const listItem = document.createElement('p');
+                    listItem.textContent = `${item.name} - $${item.price.toFixed(2)} `;
+                    
+                    // Add "Remove" button next to each item
+                    const removeButton = document.createElement('button');
+                    removeButton.textContent = 'Remove';
+                    removeButton.classList.add('remove-btn');
+                    removeButton.onclick = () => removeFromOrder(index);
+
+                    listItem.appendChild(removeButton);
+                    orderList.appendChild(listItem);
+                });
+            }
+
+            // Update the total price
+            totalPriceElement.textContent = totalPrice.toFixed(2);
+        }
+
+        // Function to remove an item from the order
+        function removeFromOrder(index) {
+            // Remove the item from the array
+            totalPrice -= orderItems[index].price;
+            orderItems.splice(index, 1);
+
+            // Update the order summary
+            updateOrderSummary();
+        }
+
+        // Function to simulate the checkout process
+        function checkout() {
+            if (orderItems.length === 0) {
+                alert('Your order is empty! Please add items to your cart.');
+            } else {
+                alert('Thank you for your order! Proceeding to checkout...');
+                
+                // Clear the order and reset the total
+                orderItems = [];
+                totalPrice = 0;
+
+                // Update the order summary to reflect empty cart
+                updateOrderSummary();
+
+                // Optionally, you can redirect the user to another page for payment/confirmation
+                // window.location.href = '/checkout'; // Example
+            }
+        }
+    </script>
+</body>
+</html>
